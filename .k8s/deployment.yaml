@@ -19,7 +19,7 @@ spec:
     metadata:
       labels:
         app: eshoponweb
-        # service: webapp
+        service: webapp
     spec:
       containers:
         - name: eshoponweb-app

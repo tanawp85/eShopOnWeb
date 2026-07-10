@@ -1,0 +1,8 @@
+name: Test Runner
+on: [workflow_dispatch]
+
+jobs:
+  test-runner:
+    runs-on: [self-hosted, pichai-longrun-01]
+    steps:
+      - run: echo "Test echo in first github runner"
