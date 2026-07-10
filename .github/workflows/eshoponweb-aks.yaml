@@ -1,0 +1,24 @@
+name: Container Workflow
+on: [workflow_dispatch]
+
+env:
+  ACR_LOGIN_SERVER: aistraining.azurecr.io
+  TAG_NAME: eshoponweb-webapp-tanawith:1.0.0
+  IMAGE_NAME: ${{ vars.ACR_LOGIN_SERVER }}/${{ vars.TAG_NAME }}
+
+jobs:
+  build-continaer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v7
+      - name: ACR Login
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ env.ACR_LOGIN_SERVER }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t ${{ env.IMAGE_NAME }} .
+          docker push ${{ env.IMAGE_NAME }}
