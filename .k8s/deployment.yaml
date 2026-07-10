@@ -7,9 +7,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: tanawith
-  name: webapp
+  name: eshoponweb-deployment
   labels:
-    app: sample-app
+    app: eshoponweb
 spec:
   replicas: 1
   selector:
@@ -18,11 +18,11 @@ spec:
   template:
     metadata:
       labels:
-        app: sample-app
-        service: webapp
+        app: eshoponweb
+        # service: webapp
     spec:
       containers:
-        - name: webapp
+        - name: eshoponweb-app
           image: aistraining.azurecr.io/eshoponweb-webapp-tanawith:1.0.0
           imagePullPolicy: IfNotPresent
           ports:
