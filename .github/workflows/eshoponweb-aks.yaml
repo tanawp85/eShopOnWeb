@@ -10,6 +10,7 @@ env:
 
 jobs:
   build-continaer:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
@@ -27,7 +28,7 @@ jobs:
 
   deploy-to-aks:
     runs-on: ubuntu-latest
-    needs: build-continaer
+    # needs: build-continaer
     steps:
       - name: Checkout source code
         uses: actions/checkout@v7
