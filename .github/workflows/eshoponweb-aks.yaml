@@ -10,7 +10,6 @@ env:
 
 jobs:
   build-continaer:
-    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
